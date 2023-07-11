@@ -2,27 +2,33 @@
 
 ## Setup the Django backend
 ### install python
+```
 sudo apt-get install python3.10
 sudo apt-get install python3-venv
+```
 **You must get into the habit of installing Python> 3.10 and < 3.12 else this is not likely to work when you set up the actual project**
 
 ### make a venv
+```
 python3 -m venv react_tutorial_venv
 source ./react_tutorial_venv/bin/activate
+```
 
 ### install python
 python3 -m pip install django
 
 ### start the project and apps
+```
 django-admin startproject react_tutorial
 cd react_tutorial
 django-admin startapp frontend
 cd frontend
-
+```
 ### make the folder structure for the app
+```
 mkdir -p templates/frontend static/frontend/js
 touch templates/frontend/index.html
-
+```
 #### paste the following code into index.html
 ```
 {% load static %}
@@ -42,9 +48,10 @@ touch templates/frontend/index.html
 ```
 
 ### setup urls.py and views.py
+```
 touch urls.py
 touch views.py
-
+```
 #### paste the following into urls.py
 ```
 from django.urls import path
@@ -100,27 +107,33 @@ python3 manage.py runserver
 ## Setup React frontend
 
 ### Install nvm
+```
 sudo apt-get upgrade
 sudo apt-get update
 sudo apt install curl 
 curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash 
-
+```
 ### install latest node
+```
 nvm install node
-
+```
 ### go inside frontend folder and make initializations
+```
 cd frontend
 npm init --yes
-
+```
 ### install react
+```
 npm install react react-dom
-
+```
 ### install babel
+```
 npm i -D @babel/preset-react @babel/preset-env @babel/core babel-loader @babel/plugin-proposal-class-properties
-
+```
 ### make .babelrc
+```
 touch .babelrc
-
+```
 #### paste the following into .babelrc
 ```
 {
@@ -146,17 +159,23 @@ touch .babelrc
 ```
 
 ### install webpack
+```
 npm i -D webpack webpack-cli webpack-dev-server html-webpack-plugin path
-
+```
 ### setup the directory and files for standalone (frontend only) development
+```
 mkdir src public
 touch src/index.js src/App.js public/index.html
-
+```
 ### setup webpack configuration
 #### install the loaders
+```
 npm install style-loader css-loader file-loader
+```
 #### make webpack.config.js
+```
 touch webpack.config.js
+```
 #### paste the following into webpack.config.js
 ```
 const HtmlWebPackPlugin = require( 'html-webpack-plugin' );
