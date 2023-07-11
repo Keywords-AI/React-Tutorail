@@ -84,7 +84,7 @@ urlpatterns = [
 #### Add the installed app in settings.py
 
 ```
-...
+... some code ...
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -94,7 +94,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'frontend.apps.FrontendConfig',
 ]
-...
+... the rest of the code ...
 ```
 
 ### Check if the server is going okay
@@ -162,7 +162,7 @@ touch .babelrc
 ```
 npm i -D webpack webpack-cli webpack-dev-server html-webpack-plugin path
 ```
-### setup the directory and files for standalone (frontend only) development
+### Set up the directory and files for standalone (frontend only) development
 ```
 mkdir src public
 touch src/index.js src/App.js public/index.html
