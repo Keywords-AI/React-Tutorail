@@ -4,6 +4,7 @@
 ### install python
 sudo apt-get install python3.10
 sudo apt-get install python3-venv
+**You must get into the habit of installing Python> 3.10 and < 3.12 else this is not likely to work when you set up the actual project**
 
 ### make a venv
 python3 -m venv react_tutorial_venv
