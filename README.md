@@ -231,7 +231,7 @@ module.exports = {
 touch src/App.js src/index.js
 ```
 #### Make the following directories
-mkdir src/pages src/components src/services src/hooks src/utilitiy src/store
+```mkdir src/pages src/components src/services src/hooks src/utilitiy src/store```
 
 #### Paste the following into App.js
 ```
