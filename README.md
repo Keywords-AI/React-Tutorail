@@ -231,7 +231,9 @@ module.exports = {
 touch src/App.js src/index.js
 ```
 #### Make the following directories
-```mkdir src/pages src/components src/services src/hooks src/utilitiy src/store```
+```
+mkdir src/pages src/components src/services src/hooks src/utilitiy src/store
+```
 
 #### Paste the following into App.js
 ```
@@ -269,7 +271,97 @@ root.render(<App />);
 ```
 npm run dev
 ```
+## Setup for TypeScript (Optional)
+### Make tscofig.json
+```
+cd frontend
+touch tsconfig.json
+```
+### Paste the following into it
+```
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    // ... other options
+    "baseUrl": "./",
+    "paths": {
+        "src": ["src/*"]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "declarations.d.ts"
+  ]
+  // ... rest of the configuration
+}
+```
+### Add typescript preset to .bablerc
+```
+module.exports = {
+    presets:[
+        "@babel/preset-env",
+        ["@babel/preset-react",{"runtime": "automatic"}],
+        "@babel/preset-typescript" # THIS LINE HERE!!!
+    ]
+}
+```
+### Replace the babel-loader rules in webpack.config.js with this
+```
+...some other code
+module: {
+    rules: [
+      {
+        test: /\.(js|jsx|ts|tsx)$/, # THIS LINE!!!
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+      },
+...other rules
+  ]
+... other module settings
+}
+...some other code
+```
+### Change the resolve setting in webpack.config.js
+```
+resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'], ### THIS LINE!!! Add .ts and .tsx
+    alias: {
+      root: __dirname,
+      src: path.resolve(__dirname, 'src'),
+    },
+  },
+```
 
+## Environmental variables (Optional)
+### Make .env file
+```
+touch .env
+```
+### Install python_dotenv
+```
+pip install python_dotenv
+```
+### Add this to settings.py
+```
+import dotenv
+dotenv.load_dotenv(BASE_DIR / '.env')
+```
+### Add any environmental varialbes like this in .env
+```
+<VARIABLE_NAME>=<value>
+
+#example
+DEBUG = True
+
+#usage
+import os
+DEBUG = os.getenv("DEBUG") # DEBUG will be true
+```
+# Setup CORS
+See link [here]https://pypi.org/project/django-cors-headers/
+
+# Setup Authentication
 
 # Coding Convensions and Folder Structures
 
