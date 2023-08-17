@@ -359,7 +359,7 @@ import os
 DEBUG = os.getenv("DEBUG") # DEBUG will be true
 ```
 # Setup CORS
-See link [here]:https://pypi.org/project/django-cors-headers/
+See link [here](https://pypi.org/project/django-cors-headers/)
 
 # Setup Authentication
 
