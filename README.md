@@ -361,7 +361,27 @@ DEBUG = os.getenv("DEBUG") # DEBUG will be true
 # Setup CORS
 See link [here](https://pypi.org/project/django-cors-headers/)
 
+# Setup CSRF Trusted Origin
+In settings.py, add this
+```
+CSRF_TRUSTED_ORIGINS = [
+    'https://www.keywordsai.co',
+    'http://www.keywordsai.co',
+    'https://keywordsai.co',
+    'http://keywordsai.co',
+    'http://www.careersgpt.app',
+    'https://www.careersgpt.app',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+    'https://localhost:8000',
+    'https://127.0.0.1:8000',
+]
+```
+
 # Setup Authentication
+
+
+
 
 # Coding Convensions and Folder Structures
 
