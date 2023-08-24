@@ -380,7 +380,46 @@ CSRF_TRUSTED_ORIGINS = [
 
 # Setup Authentication
 
+# Setup Asynchronous Application
+## Install pachages
+```
+pip install daphne django-channels
+```
+## Modify asgi.py
+```
+"""
+ASGI config for CareersGPT CareersGPToject.
 
+It exposes the ASGI callable as a module-level variable named ``application``.
+
+For more information on this file, see
+https://docs.djangoCareersGPToject.com/en/4.1/howto/deployment/asgi/
+"""
+
+import os
+from channels.routing import ProtocolTypeRouter, URLRouter
+from django.core.asgi import get_asgi_application
+from channels.auth import AuthMiddlewareStack
+
+
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'CareersGPT.settings')
+django_asgi_app = get_asgi_application()
+import chatbot.routing
+import job_board.routing
+# import AI_rec.routing
+application = ProtocolTypeRouter({
+    "http": django_asgi_app,
+    'websocket': AuthMiddlewareStack(
+        URLRouter(
+            # chatbot.routing.websocket_urlpatterns +
+            # AI_rec.routing.websocket_urlpatterns
+            chatbot.routing.websocket_urlpatterns +
+            job_board.routing.websocket_urlpatterns
+        )
+    )
+})
+```
 
 
 # Coding Convensions and Folder Structures
