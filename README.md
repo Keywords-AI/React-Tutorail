@@ -277,6 +277,28 @@ npm run dev
 cd frontend
 touch tsconfig.json
 ```
+
+## Setup SCSS & Tailwind
+### Add css loader
+```
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                ident: "postcss",
+                plugins: ["tailwindcss", "autoprefixer"],
+              },
+            },
+          },
+          "sass-loader",
+        ],
+      },
+```
 ### Paste the following into it
 ```
 {
